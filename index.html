@@ -3,183 +3,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infamous Boosting & Unlock Services</title>
+    <title>Infamous Boosting & Unlock Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-image: url('background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
+            font-family: 'Roboto', sans-serif;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            background-color: #000;
         }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.7);
+        
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://i.gifer.com/7VAZ.gif') center/cover no-repeat;
+            opacity: 0.6;
+        }
+        
+        .content-wrapper {
+            background-color: rgba(10, 10, 30, 0.85);
             min-height: 100vh;
+            backdrop-filter: blur(5px);
             padding: 20px;
         }
-
-        .header {
-            height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .header p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .store {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 40px;
-            border-radius: 10px;
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
-
-        .store h2 {
+        
+        header {
             text-align: center;
-            font-size: 2.5rem;
+            padding: 40px 20px;
+            background: rgba(20, 20, 60, 0.7);
+            border-radius: 8px;
             margin-bottom: 30px;
-            color: #222;
+            border: 1px solid #4CAF50;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
         }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+        
+        h1 {
+            color: #4CAF50;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
         }
-
-        .product {
-            background: white;
+        
+        h2 {
+            color: #4CAF50;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 2rem;
+        }
+        
+        .service-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+        
+        .benefits-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 35px;
+        }
+        
+        .benefits-list li i {
+            color: #4CAF50;
+            position: absolute;
+            left: 0;
+            top: 12px;
+        }
+        
+        .contact-email {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.2);
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: #4CAF50;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #4CAF50;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 20px;
+        }
+        
+        .contact-email:hover {
+            background: rgba(76, 175, 80, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* New Social Contacts Styles */
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .discord-link {
+            background: #5865F2;
+        }
+        
+        .telegram-link {
+            background: #0088cc;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .contact-text {
+            font-family: 'Orbitron', sans-serif;
+            color: #4CAF50;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 20px 0;
+            justify-content: center;
+        }
+        
+        .product-card {
+            width: 280px;
+            border: 1px solid #4CAF50;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: rgba(20, 20, 40, 0.8);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
-        .product:hover {
+        
+        .product-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.4);
+            border-color: #fff;
         }
-
-        .product-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+        
+        .platform-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
         }
-
-        .product-info {
+        
+        .ps-icon {
+            color: #003087;
+        }
+        
+        .xbox-icon {
+            color: #107C10;
+        }
+        
+        .pc-icon {
+            color: #E34F26;
+        }
+        
+        .product-header {
             padding: 20px;
+            background: rgba(30, 30, 60, 0.6);
+            border-bottom: 1px solid #4CAF50;
+            position: relative;
         }
-
+        
         .product-title {
-            font-size: 1.2rem;
-            margin: 0 0 10px 0;
-        }
-
-        .product-price {
-            font-weight: bold;
-            color: #e74c3c;
+            color: #fff;
+            margin: 0;
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
         }
-
-        .add-to-cart {
-            background: #3498db;
+        
+        .product-description {
+            padding: 20px;
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 120px;
+        }
+        
+        .product-footer {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 30, 50, 0.7);
+        }
+        
+        .product-price {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .buy-button {
+            background: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 4px;
             cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            transition: background 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
         }
-
-        .add-to-cart:hover {
-            background: #2980b9;
+        
+        .buy-button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .service-highlights {
+            margin: 40px 0;
+            padding: 25px;
+            background: rgba(30, 30, 60, 0.6);
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #4CAF50;
+        }
+        
+        .highlight-item {
+            display: inline-block;
+            margin: 0 15px 15px;
+            color: #4CAF50;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #4CAF50;
+            background: rgba(20, 20, 40, 0.7);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+            margin: 40px 0;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="header">
-            <h1>Welcome to Infamous Services // Boosting & Unlocks</h1>
-            <p>We will play your games for you, unlock items you want in game like doing a missions with you & carry you though it or simply you don't have the time, We will play on your account</p>
-            <p>Contact us: infamous.unleashed.help@gmail.com </p>
-        </div>
-
-        <div class="store">
-            <h2>Products</h2>
-            <div class="products">
-                <!-- Product 1 -->
-                <div class="product">
-                    <div class="product-image" style="background-image: url('https://i.imgur.com/lYBg98u.jpeg');"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">[PS4/PS5] GTA V Leveling Package: 1-250 Level Up</h3>
-                        <p class="product-price">$5-25</p>
-                        <a href="checkout.html" class="add-to-cart">Add to Cart</a>
+    <div class="space-bg"></div>
+    <div class="content-wrapper">
+        <div class="container">
+            <header>
+                <h1>INFAMOUS BOOSTING SERVICE</h1>
+                <div class="service-description">
+                    <h2>Premium Game Boosting Service</h2>
+                    <p>Our professional gamers will handle the grind so you can enjoy the rewards:</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Account progression & item unlocking</li>
+                        <li><i class="fas fa-check"></i> Trophy/Achievement completion services</li>
+                        <li><i class="fas fa-check"></i> Mission completion (solo or cooperative)</li>
+                        <li><i class="fas fa-check"></i> Skill-based carries through tough content</li>
+                        <li><i class="fas fa-check"></i> Full account play when you're unavailable</li>
+                    </ul>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:infamous.unleashed.help@gmail.com" class="contact-email">Contact Us: infamous.unleashed.help@gmail.com</a>
+                        
+                        <p class="contact-text">Or reach us on:</p>
+                        <div class="social-contacts">
+                            <a href="https://discord.gg/your-invite-link" class="social-link discord-link" target="_blank" title="Join our Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                            <a href="https://t.me/your-telegram-link" class="social-link telegram-link" target="_blank" title="Message us on Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </header>
 
-                <!-- Product 2 -->
-                <div class="product">
-                    <div class="product-image" style="background-image: url('https://i.imgur.com/GrMtMmc.jpeg');"></div>
-                    <div class="product-info">
-                        <h3 class="product-title"> </h3>
-                        <p class="product-price">$20</p>
-                        <a href="checkout.html" class="add-to-cart">Add to Cart</a>
+            <div class="service-highlights">
+                <div class="highlight-item">✓ Secure Account Handling</div>
+                <div class="highlight-item">✓ 24/7 Boosting Available</div>
+                <div class="highlight-item">✓ 100% Satisfaction Guarantee</div>
+                <div class="highlight-item">✓ Live Progress Updates</div>
+                <div class="highlight-item">✓ Professional Players</div>
+                <div class="highlight-item">✓ All Platforms Supported</div>
+            </div>
+
+            <h2>CS:GO/CS2 Boosting Services</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Competitive Rank Boost</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get boosted to your desired rank by our professional players. We'll play on your account or queue with you. All ranks available from Silver to Global Elite.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $9.99</span>
+                        <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
-
-                <!-- Product 3 -->
-                <div class="product">
-                    <div class="product-image" style="background-image: url('tro/playstation.jpg');"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Playstation Trophy Service </h3>
-                        <p class="product-price">$75</p>
-                        <a href="checkout.html " class="add-to-cart">Add to Cart</a>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">XP Farming Service</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Fast XP farming to unlock Prime status and weekly rewards. We'll maximize your XP gains efficiently through optimized gameplay methods.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $4.99</span>
+                        <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
-
-  <!-- Product 3 -->
-  <div class="product">
-    <div class="product-image" style="background-image: url('tro/xbox.jpg');"></div>
-    <div class="product-info">
-        <h3 class="product-title">Xbox Trophy Service </h3>
-        <p class="product-price">$75</p>
-        <a href="checkout.html " class="add-to-cart">Add to Cart</a>
-    </div>
-</div>
-
-                <!-- Product 4 -->
-                <div class="product">
-                    <div class="product-image" style="background-image: url(' ');"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Test payment</h3>
-                        <p class="product-price">$5</p>
-                        <a href="checkout.html" class="add-to-cart">Add to Cart</a>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Wingman Rank Boost</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Climb the Wingman ranks quickly with our expert duo partners. Fast and discreet service with guaranteed results.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $7.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Placement Matches</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get the best possible rank from your placement matches. We'll win maximum games for highest initial placement.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">$29.99</span>
+                        <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
             </div>
+
+            <hr class="section-divider">
+
+            <h2>PlayStation Trophy Unlocking</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Single Trophy Unlock</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Need that one elusive trophy? We'll get it for you! Specify the trophy and game, and we'll handle the rest.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $14.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Platinum Trophy Service</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get that coveted Platinum trophy! We'll complete all required trophies for any PlayStation game.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $49.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Multiplayer Trophy Boost</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Stuck on multiplayer trophies? Our team will coordinate to help you unlock those difficult online trophies.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Time Attack Trophy Service</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Speedrun and time-based trophies handled by our expert players who specialize in efficient completion.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $34.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <h2>Xbox Achievement Unlocking</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Single Achievement Unlock</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Can't get that one frustrating achievement? Let our specialists unlock it for you quickly and efficiently.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $12.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">100% Completion Service</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get all achievements for any Xbox game. We'll complete every requirement for that perfect Gamerscore.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $44.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Online Achievement Boost</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Difficult online achievements made easy. Our team will coordinate to help you unlock multiplayer achievements.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $22.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">DLC Achievement Pack</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete all DLC achievements for any game. Perfect for completing your expansion content.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <h2>Other Gaming Services</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Account Power Leveling</h3>
+                        <i class="fas fa-gamepad platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Level up your character quickly in any game. We'll grind the levels so you can enjoy the endgame content.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $19.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Rare Item Farming</h3>
+                        <i class="fas fa-gem platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Need that ultra-rare drop? We'll farm it for you! Specify the item and we'll handle the grind.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Season Pass Completion</h3>
+                        <i class="fas fa-calendar-alt platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete entire season passes/battle passes. We'll unlock all tiers and rewards before the season ends.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $39.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-title">Custom Boosting Package</h3>
+                        <i class="fas fa-star platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Need something specific? Create your own custom boosting package tailored to your exact needs.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">Custom Quote</span>
+                        <button class="buy-button">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>© 2023 Infamous Boosting Service. All rights reserved.</p>
+                <p>Not affiliated with any game developers or publishers. All trademarks are property of their respective owners.</p>
+                <p>By using our services, you agree to our Terms of Service.</p>
+            </footer>
         </div>
     </div>
 </body>
