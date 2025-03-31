@@ -35,9 +35,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             background: url('https://i.gifer.com/7VAZ.gif') center/cover no-repeat;
             opacity: 0.6;
+        }
+        
+        .particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: transparent;
         }
         
         /* Audio Player Styling */
@@ -134,6 +142,8 @@
             margin-bottom: 30px;
             border: 1px solid #4CAF50;
             box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
         
         h1 {
@@ -142,6 +152,12 @@
             font-size: 2.8rem;
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+            to { text-shadow: 0 0 20px rgba(76, 175, 80, 1), 0 0 30px rgba(76, 175, 80, 0.7); }
         }
         
         h2 {
@@ -150,6 +166,27 @@
             text-align: center;
             margin: 40px 0 20px;
             font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+        }
+        
+        h2::before, h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4CAF50);
+        }
+        
+        h2::before {
+            left: -60px;
+        }
+        
+        h2::after {
+            right: -60px;
+            background: linear-gradient(90deg, #4CAF50, transparent);
         }
         
         .service-description {
@@ -170,6 +207,11 @@
             padding: 10px 0;
             position: relative;
             padding-left: 35px;
+            transition: all 0.3s;
+        }
+        
+        .benefits-list li:hover {
+            transform: translateX(10px);
         }
         
         .benefits-list li i {
@@ -177,6 +219,11 @@
             position: absolute;
             left: 0;
             top: 12px;
+            transition: all 0.3s;
+        }
+        
+        .benefits-list li:hover i {
+            transform: scale(1.3);
         }
         
         .contact-email {
@@ -265,6 +312,24 @@
             background: rgba(20, 20, 40, 0.8);
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #4CAF50;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
         }
         
         .product-card:hover {
@@ -343,6 +408,7 @@
         .buy-button:hover {
             background: #45a049;
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
         }
         
         .service-highlights {
@@ -360,6 +426,19 @@
             color: #4CAF50;
             font-size: 1rem;
             font-family: 'Orbitron', sans-serif;
+            position: relative;
+            padding: 0 10px;
+        }
+        
+        .highlight-item::after {
+            content: '•';
+            position: absolute;
+            right: -15px;
+            color: #4CAF50;
+        }
+        
+        .highlight-item:last-child::after {
+            display: none;
         }
         
         footer {
@@ -399,6 +478,12 @@
             border-radius: 8px;
             border: 1px solid #4CAF50;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
         }
 
         .review-header {
@@ -454,6 +539,219 @@
             font-size: 0.8rem;
             color: #4CAF50;
         }
+
+        /* Scrolling Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Buy Button */
+        .floating-buy {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .floating-buy:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.7);
+        }
+
+        /* Notification Dot */
+        .notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 15px;
+            height: 15px;
+            background: #FF5722;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Live Chat Button */
+        .live-chat {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.7);
+        }
+
+        .live-chat::after {
+            content: 'Live Support';
+            position: absolute;
+            right: 70px;
+            white-space: nowrap;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 8px 15px;
+            border-radius: 30px;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+            border: 1px solid #4CAF50;
+        }
+
+        .live-chat:hover::after {
+            opacity: 1;
+            right: 80px;
+        }
+
+        /* Discount Ribbon */
+        .discount-ribbon {
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            background: #FF5722;
+            color: white;
+            padding: 3px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .discount-ribbon::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            border-left: 10px solid transparent;
+            border-right: 0px solid transparent;
+            border-top: 10px solid #c0411d;
+        }
+
+        /* Countdown Timer */
+        .countdown-timer {
+            background: rgba(20, 20, 40, 0.9);
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .countdown-title {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .countdown-digits {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .countdown-digit {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            min-width: 50px;
+            border: 1px solid #4CAF50;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            color: #bbb;
+            margin-top: 5px;
+        }
+
+        /* Featured Product */
+        .featured-product {
+            background: rgba(30, 30, 60, 0.7);
+            border: 1px solid #4CAF50;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h2::before, h2::after {
+                width: 30px;
+            }
+            
+            h2::before {
+                left: -40px;
+            }
+            
+            h2::after {
+                right: -40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -470,16 +768,26 @@
         <label for="musicToggle">Techno Mode</label>
     </div>
     
-    <!-- Floating Tech Elements -->
-    <div class="tech-circle" style="top: 10%; left: 5%;"></div>
-    <div class="tech-circle" style="top: 80%; left: 90%;"></div>
-    <div class="tech-line" style="top: 30%; left: 0; width: 100%;"></div>
-    <div class="tech-line" style="top: 70%; left: 0; width: 100%;"></div>
+    <!-- Floating Buy Button -->
+    <a href="#products" class="floating-buy">
+        <i class="fas fa-bolt"></i> Quick Order
+        <span class="notification-dot"></span>
+    </a>
     
+    <!-- Live Chat Button -->
+    <div class="live-chat">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- Particles.js Background -->
+    <div id="particles-js" class="particles-js"></div>
+    
+    <!-- Space Background -->
     <div class="space-bg"></div>
+    
     <div class="content-wrapper">
         <div class="container">
-            <header>
+            <header class="fade-in">
                 <h1>INFAMOUS BOOSTING SERVICE</h1>
                 <div class="service-description">
                     <h2>Premium Game Boosting Service</h2>
@@ -508,7 +816,26 @@
                 </div>
             </header>
 
-            <div class="service-highlights">
+            <!-- Countdown Timer -->
+            <div class="countdown-timer fade-in">
+                <div class="countdown-title">SPECIAL OFFER ENDS IN:</div>
+                <div class="countdown-digits">
+                    <div>
+                        <div class="countdown-digit" id="countdown-hours">24</div>
+                        <div class="countdown-label">HOURS</div>
+                    </div>
+                    <div>
+                        <div class="countdown-digit" id="countdown-minutes">59</div>
+                        <div class="countdown-label">MINUTES</div>
+                    </div>
+                    <div>
+                        <div class="countdown-digit" id="countdown-seconds">59</div>
+                        <div class="countdown-label">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-highlights fade-in">
                 <div class="highlight-item">✓ Secure Account Handling</div>
                 <div class="highlight-item">✓ 24/7 Boosting Available</div>
                 <div class="highlight-item">✓ 100% Satisfaction Guarantee</div>
@@ -517,8 +844,46 @@
                 <div class="highlight-item">✓ All Platforms Supported</div>
             </div>
 
+            <!-- Featured Product -->
+            <div class="featured-product fade-in">
+                <div class="featured-badge">FEATURED</div>
+                <h2>GTA 5 ULTIMATE PACKAGE</h2>
+                <p class="service-description" style="text-align: center;">Our most popular package - everything you need to dominate Los Santos!</p>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="discount-ribbon">15% OFF</div>
+                        <div class="product-header">
+                            <h3 class="product-title">Ultimate Modded Account</h3>
+                            <i class="fas fa-user-secret platform-icon"></i>
+                        </div>
+                        <div class="product-description">
+                            Complete package: $500M, Level 250, All Businesses, 50 Modded Vehicles, All Weapons, K/D Ratio 5.0, Max Stats, and much more!
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price"><s>$89.99</s> $76.49</span>
+                            <button class="buy-button">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-header">
+                            <h3 class="product-title">Money Recovery Service</h3>
+                            <i class="fas fa-shield-alt platform-icon"></i>
+                        </div>
+                        <div class="product-description">
+                            Got banned? We'll recover your lost money and items with our premium recovery service. 100% safe with money-back guarantee.
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">From $29.99</span>
+                            <button class="buy-button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Reviews Section -->
-            <div class="reviews-section">
+            <div class="reviews-section fade-in">
                 <h2>Customer Reviews</h2>
                 <p class="service-description" style="text-align: center;">Hear what our satisfied customers have to say about our services</p>
                 
@@ -528,7 +893,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/3QZ2x0A.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">xXShadowKillerXx</h3>
+                                <h3 class="reviewer-name">Marcus_T</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -550,7 +915,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/LkYVxEd.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">GTAQueen_420</h3>
+                                <h3 class="reviewer-name">SarahJ</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -572,7 +937,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/VvPg9lD.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">TrophyHunter99</h3>
+                                <h3 class="reviewer-name">TrophyMaster</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -594,7 +959,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/9Rq7NQz.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">WZ_Sweatlord</h3>
+                                <h3 class="reviewer-name">Alex_WZ</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -616,7 +981,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/JqkXb0W.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">Destiny2_God</h3>
+                                <h3 class="reviewer-name">Destiny2Pro</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -638,7 +1003,7 @@
                         <div class="review-header">
                             <img src="https://i.imgur.com/5tQmzBv.png" alt="Reviewer" class="review-avatar">
                             <div class="reviewer-info">
-                                <h3 class="reviewer-name">ModdedAccountKing</h3>
+                                <h3 class="reviewer-name">ModdedKing</h3>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -657,9 +1022,11 @@
                 </div>
             </div>
 
-            <h2>CS:GO/CS2 Boosting Services</h2>
+            <a id="products"></a>
+            <h2 class="fade-in">CS:GO/CS2 Boosting Services</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">10% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Competitive Rank Boost</h3>
                         <i class="fab fa-steam pc-icon platform-icon"></i>
@@ -668,12 +1035,12 @@
                         Get boosted to your desired rank by our professional players. We'll play on your account or queue with you. All ranks available from Silver to Global Elite.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $9.99</span>
+                        <span class="product-price"><s>$11.99</s> $10.79</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">XP Farming Service</h3>
                         <i class="fab fa-steam pc-icon platform-icon"></i>
@@ -687,7 +1054,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Wingman Rank Boost</h3>
                         <i class="fab fa-steam pc-icon platform-icon"></i>
@@ -701,7 +1068,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Placement Matches</h3>
                         <i class="fab fa-steam pc-icon platform-icon"></i>
@@ -714,13 +1081,71 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional CS:GO Products -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Faceit Level Boost</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Increase your Faceit level with our professional players. We'll improve your ELO and help you climb the Faceit ladder.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $14.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">5% OFF</div>
+                    <div class="product-header">
+                        <h3 class="product-title">ESEA Rank Boost</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Boost your ESEA rank with our top-tier players. We'll improve your RWS and help you reach your desired rank.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price"><s>$19.99</s> $18.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">K/D Ratio Improvement</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Improve your overall K/D ratio with our professional players. We'll play matches to boost your stats discreetly.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $12.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Prime Status Unlock</h3>
+                        <i class="fab fa-steam pc-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get Prime status unlocked on your account without the grind. Instant activation after purchase.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">$24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>GTA 5 Modded Services</h2>
+            <h2 class="fade-in">GTA 5 Modded Services</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">GTA$ Money Drop</h3>
                         <i class="fas fa-money-bill-wave platform-icon"></i>
@@ -734,7 +1159,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">20% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Modded Account</h3>
                         <i class="fas fa-user-secret platform-icon"></i>
@@ -743,12 +1169,12 @@
                         Fully modded account with max level, all unlocks, billions of GTA$, rare vehicles, outfits, and more. Instant delivery.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $24.99</span>
+                        <span class="product-price"><s>$29.99</s> $23.99</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Modded Vehicles</h3>
                         <i class="fas fa-car platform-icon"></i>
@@ -762,7 +1188,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">RP Level Boost</h3>
                         <i class="fas fa-level-up-alt platform-icon"></i>
@@ -775,13 +1201,70 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional GTA 5 Products -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Cayo Perico Heist</h3>
+                        <i class="fas fa-skull platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete the Cayo Perico heist with maximum payout. We'll handle all setups and finale for you.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">$19.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">All Businesses Setup</h3>
+                        <i class="fas fa-building platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get all businesses (Bunker, Nightclub, MC, etc.) fully upgraded and stocked for maximum profit.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">K/D Ratio Boost</h3>
+                        <i class="fas fa-crosshairs platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Improve your K/D ratio significantly. We'll play on your account to boost your stats discreetly.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $14.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Unlock All Awards</h3>
+                        <i class="fas fa-trophy platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Unlock all in-game awards, medals, and achievements instantly. Stand out with a complete profile.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">$24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>Call of Duty Services</h2>
+            <h2 class="fade-in">Call of Duty Services</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Bot Lobby Service</h3>
                         <i class="fas fa-robot platform-icon"></i>
@@ -795,7 +1278,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">15% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Camo Unlock Service</h3>
                         <i class="fas fa-spray-can platform-icon"></i>
@@ -804,12 +1288,12 @@
                         Get all camos unlocked including Gold, Platinum, Damascus, and Orion. We'll complete all challenges for you.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $29.99</span>
+                        <span class="product-price"><s>$34.99</s> $29.74</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">XP Lobby Boost</h3>
                         <i class="fas fa-tachometer-alt platform-icon"></i>
@@ -823,7 +1307,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Liquid Divinium (BO3)</h3>
                         <i class="fas fa-flask platform-icon"></i>
@@ -836,13 +1320,70 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional COD Products -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Warzone Rank Boost</h3>
+                        <i class="fas fa-ranking-star platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Boost your Warzone rank to the highest level. We'll play on your account or with you in your lobby.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Multiplayer Nuke</h3>
+                        <i class="fas fa-bomb platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get a nuke in multiplayer matches. We'll play on your account to achieve this prestigious accomplishment.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">$49.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Battle Pass Completion</h3>
+                        <i class="fas fa-ticket platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete the entire battle pass in record time. Get all rewards and tiers without the grind.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Zombies Easter Eggs</h3>
+                        <i class="fas fa-skull-crossbones platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete all Zombies Easter Eggs and unlock all related rewards and achievements.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $39.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>PlayStation Trophy Unlocking</h2>
+            <h2 class="fade-in">PlayStation Trophy Unlocking</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Single Trophy Unlock</h3>
                         <i class="fab fa-playstation ps-icon platform-icon"></i>
@@ -856,7 +1397,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">10% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Platinum Trophy Service</h3>
                         <i class="fab fa-playstation ps-icon platform-icon"></i>
@@ -865,12 +1407,12 @@
                         Get that coveted Platinum trophy! We'll complete all required trophies for any PlayStation game.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $49.99</span>
+                        <span class="product-price"><s>$54.99</s> $49.49</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Multiplayer Trophy Boost</h3>
                         <i class="fab fa-playstation ps-icon platform-icon"></i>
@@ -884,7 +1426,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Time Attack Trophy Service</h3>
                         <i class="fab fa-playstation ps-icon platform-icon"></i>
@@ -897,13 +1439,70 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional PS Products -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Ultimate 100% Completion</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Get 100% completion in any game including all DLC content. The ultimate flex for your profile.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $79.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">PS5 Activity Cards</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete all PS5 Activity Cards for any game. Perfect for those who want to fully complete their PS5 games.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">PSVR Trophy Unlock</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Having trouble with PSVR trophies? Our specialists will handle the VR challenges for you.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $34.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">PSN Profile Cleanup</h3>
+                        <i class="fab fa-playstation ps-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Clean up your PSN profile by removing 0% games or completing games you've abandoned.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $49.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>Xbox Achievement Unlocking</h2>
+            <h2 class="fade-in">Xbox Achievement Unlocking</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Single Achievement Unlock</h3>
                         <i class="fab fa-xbox xbox-icon platform-icon"></i>
@@ -917,7 +1516,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">10% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">100% Completion Service</h3>
                         <i class="fab fa-xbox xbox-icon platform-icon"></i>
@@ -926,12 +1526,12 @@
                         Get all achievements for any Xbox game. We'll complete every requirement for that perfect Gamerscore.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $44.99</span>
+                        <span class="product-price"><s>$49.99</s> $44.99</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Online Achievement Boost</h3>
                         <i class="fab fa-xbox xbox-icon platform-icon"></i>
@@ -945,7 +1545,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">DLC Achievement Pack</h3>
                         <i class="fab fa-xbox xbox-icon platform-icon"></i>
@@ -958,13 +1558,70 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional Xbox Products -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">TrueAchievements Boost</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Specialized boosting for difficult achievements that carry high TA ratios. Impress your friends with rare completions.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $34.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Xbox Profile Cleanup</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Clean up your Xbox profile by completing games you've abandoned or removing low completion percentages.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $44.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Game Pass Completion</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Complete all achievements for any Xbox Game Pass title before it leaves the service.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $39.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Xbox 360 Legacy Boost</h3>
+                        <i class="fab fa-xbox xbox-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Specialized service for Xbox 360 games that are harder to complete due to server closures or difficulty.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $49.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>Other Popular Game Services</h2>
+            <h2 class="fade-in">Other Popular Game Services</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Fortnite Account Boost</h3>
                         <i class="fas fa-ghost platform-icon"></i>
@@ -978,7 +1635,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">5% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Apex Legends Rank Boost</h3>
                         <i class="fas fa-bolt platform-icon"></i>
@@ -987,12 +1645,12 @@
                         Rank boosting for all tiers from Bronze to Predator. Solo or team queue options available with your choice of legend.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $19.99</span>
+                        <span class="product-price"><s>$20.99</s> $19.94</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Rocket League Items</h3>
                         <i class="fas fa-car-side platform-icon"></i>
@@ -1006,7 +1664,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Destiny 2 Carry Service</h3>
                         <i class="fas fa-space-shuttle platform-icon"></i>
@@ -1019,13 +1677,70 @@
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
+                
+                <!-- Additional Popular Games -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Valorant Rank Boost</h3>
+                        <i class="fas fa-crosshairs platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Climb the Valorant ranks with our professional players. From Iron to Radiant, we've got you covered.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $19.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Overwatch 2 Boost</h3>
+                        <i class="fas fa-gamepad platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Competitive rank boost, endorsement level, golden weapons, and all hero unlocks. Fast and discreet.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $24.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Rainbow Six Siege Boost</h3>
+                        <i class="fas fa-helmet-battle platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Rank boosting, MMR recovery, champion rank push, and all operator unlocks. All platforms supported.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">League of Legends Boost</h3>
+                        <i class="fab fa-accessible-icon platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Rank boosting from Iron to Challenger, MMR recovery, placement matches, and champion mastery.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $14.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <h2>Other Gaming Services</h2>
+            <h2 class="fade-in">Other Gaming Services</h2>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Account Power Leveling</h3>
                         <i class="fas fa-gamepad platform-icon"></i>
@@ -1039,7 +1754,8 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="discount-ribbon">10% OFF</div>
                     <div class="product-header">
                         <h3 class="product-title">Rare Item Farming</h3>
                         <i class="fas fa-gem platform-icon"></i>
@@ -1048,12 +1764,12 @@
                         Need that ultra-rare drop? We'll farm it for you! Specify the item and we'll handle the grind.
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">From $24.99</span>
+                        <span class="product-price"><s>$27.99</s> $25.19</span>
                         <button class="buy-button">Buy Now</button>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Season Pass Completion</h3>
                         <i class="fas fa-calendar-alt platform-icon"></i>
@@ -1067,7 +1783,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-header">
                         <h3 class="product-title">Custom Boosting Package</h3>
                         <i class="fas fa-star platform-icon"></i>
@@ -1080,9 +1796,66 @@
                         <button class="buy-button">Contact Us</button>
                     </div>
                 </div>
+                
+                <!-- Additional Services -->
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Account Recovery Service</h3>
+                        <i class="fas fa-shield-virus platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Recover your banned or reset account. We'll restore your progress, items, and stats where possible.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $49.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Coaching Sessions</h3>
+                        <i class="fas fa-chalkboard-teacher platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Improve your skills with 1-on-1 coaching from professional players. Available for most competitive games.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $29.99/hr</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Stats Reset Service</h3>
+                        <i class="fas fa-undo-alt platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Reset your in-game stats (K/D, W/L, etc.) to start fresh. Perfect for accounts with poor historical performance.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $34.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <h3 class="product-title">Clan/Team Carry</h3>
+                        <i class="fas fa-users platform-icon"></i>
+                    </div>
+                    <div class="product-description">
+                        Need to carry your whole team? We'll provide multiple boosters to help your entire clan rank up together.
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">From $99.99</span>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
-            <footer>
+            <footer class="fade-in">
                 <p>© 2025 Infamous Boosting Service. All rights reserved.</p>
                 <p>Not affiliated with any game developers or publishers. All trademarks are property of their respective owners.</p>
                 <p>By using our services, you agree to our Terms of Service.</p>
@@ -1090,7 +1863,119 @@
         </div>
     </div>
 
+    <!-- Particles.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
     <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#4CAF50"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4CAF50",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+
         // Music Player Functionality
         const music = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
@@ -1113,57 +1998,53 @@
             }
         });
         
-        // Floating Tech Elements Animation
-        function createFloatingTech() {
-            const techElements = ['circle', 'line'];
-            const colors = ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107'];
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
             
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement('div');
-                const type = techElements[Math.floor(Math.random() * techElements.length)];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                element.className = `tech-${type}`;
-                element.style.background = type === 'circle' ? color : `linear-gradient(90deg, transparent, ${color}, transparent)`;
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.top = `${Math.random() * 100}%`;
-                
-                if (type === 'line') {
-                    element.style.width = `${Math.random() * 200 + 50}px`;
-                    element.style.transform = `rotate(${Math.random() * 360}deg)`;
+            const diff = endOfDay - now;
+            
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                
-                document.body.appendChild(element);
-                
-                // Animate
-                animateTechElement(element);
-            }
-        }
+            });
+        }, {
+            threshold: 0.1
+        });
         
-        function animateTechElement(element) {
-            let posX = Math.random() * 100;
-            let posY = Math.random() * 100;
-            let speedX = (Math.random() - 0.5) * 0.2;
-            let speedY = (Math.random() - 0.5) * 0.2;
-            
-            function move() {
-                posX += speedX;
-                posY += speedY;
-                
-                if (posX > 100 || posX < 0) speedX *= -1;
-                if (posY > 100 || posY < 0) speedY *= -1;
-                
-                element.style.left = `${posX}%`;
-                element.style.top = `${posY}%`;
-                
-                requestAnimationFrame(move);
-            }
-            
-            move();
-        }
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
         
-        // Initialize
-        createFloatingTech();
+        // Live Chat Button
+        document.querySelector('.live-chat').addEventListener('click', function() {
+            alert('Live chat support will open in a new window. Our agents are available 24/7 to assist you!');
+        });
+        
+        // Notification Dot Animation
+        setInterval(() => {
+            const dot = document.querySelector('.notification-dot');
+            dot.style.opacity = dot.style.opacity === '0.5' ? '1' : '0.5';
+        }, 1000);
     </script>
 </body>
 </html>
