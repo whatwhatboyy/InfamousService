@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infamous Boosting & Unlock Service</title>
+    <title>Infamous Boosting & Unlock Service | Premium Game Boosting</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/JqkXb0W.png" type="image/png">
+    
+    <!-- Embed Meta Tags -->
+    <meta property="og:title" content="Infamous Boosting Service">
+    <meta property="og:description" content="Professional game boosting for CS:GO, GTA 5, Call of Duty, and more. Fast, safe, and reliable.">
+    <meta property="og:image" content="https://i.imgur.com/JqkXb0W.png">
+    <meta property="og:url" content="https://infamousboosting.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
@@ -28,6 +40,78 @@
             opacity: 0.6;
         }
         
+        /* Audio Player Styling */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 1px solid #4CAF50;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .audio-player button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .audio-player button:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+        
+        .audio-player label {
+            font-family: 'Orbitron', sans-serif;
+            color: #4CAF50;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        /* Pulsing Animation */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+        }
+        
+        .pulse-effect {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Floating Tech Elements */
+        .tech-circle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #4CAF50;
+            border-radius: 50%;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .tech-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+            z-index: -1;
+        }
+        
+        /* Content Wrapper */
         .content-wrapper {
             background-color: rgba(10, 10, 30, 0.85);
             min-height: 100vh;
@@ -115,7 +199,7 @@
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
         
-        /* New Social Contacts Styles */
+        /* Social Contacts */
         .contact-methods {
             display: flex;
             flex-direction: column;
@@ -164,6 +248,7 @@
             margin-bottom: 5px;
         }
         
+        /* Product Grid */
         .product-grid {
             display: flex;
             flex-wrap: wrap;
@@ -291,9 +376,106 @@
             margin: 40px 0;
             border: none;
         }
+
+        /* Reviews Section */
+        .reviews-section {
+            margin: 60px 0;
+            padding: 30px;
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 10px;
+            border: 1px solid #4CAF50;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: rgba(30, 30, 50, 0.8);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #4CAF50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #4CAF50;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            margin: 0;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: #bbb;
+            margin: 5px 0 0;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .review-content {
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .review-game {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 3px 10px;
+            background: rgba(76, 175, 80, 0.2);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
+    <!-- Background Music (Hidden Autoplay) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio Player Controls -->
+    <div class="audio-player pulse-effect">
+        <button id="musicToggle">
+            <i class="fas fa-play" id="musicIcon"></i>
+        </button>
+        <label for="musicToggle">Techno Mode</label>
+    </div>
+    
+    <!-- Floating Tech Elements -->
+    <div class="tech-circle" style="top: 10%; left: 5%;"></div>
+    <div class="tech-circle" style="top: 80%; left: 90%;"></div>
+    <div class="tech-line" style="top: 30%; left: 0; width: 100%;"></div>
+    <div class="tech-line" style="top: 70%; left: 0; width: 100%;"></div>
+    
     <div class="space-bg"></div>
     <div class="content-wrapper">
         <div class="container">
@@ -333,6 +515,146 @@
                 <div class="highlight-item">✓ Live Progress Updates</div>
                 <div class="highlight-item">✓ Professional Players</div>
                 <div class="highlight-item">✓ All Platforms Supported</div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="reviews-section">
+                <h2>Customer Reviews</h2>
+                <p class="service-description" style="text-align: center;">Hear what our satisfied customers have to say about our services</p>
+                
+                <div class="reviews-grid">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/3QZ2x0A.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">xXShadowKillerXx</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "These guys are LEGIT! Got my CS:GO rank from Silver to Global in under a week. The booster was insane—dropping 30 bombs every game. No ban, no issues. 10/10!"
+                        </p>
+                        <span class="review-game">CS:GO Rank Boost</span>
+                        <p class="review-date">March 15, 2023</p>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/LkYVxEd.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">GTAQueen_420</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "Bought a $50M GTA money drop and it was INSTANT. No recovery, no bans. Customer support even helped me transfer it safely. Will definitely buy again!"
+                        </p>
+                        <span class="review-game">GTA 5 Money Drop</span>
+                        <p class="review-date">February 28, 2023</p>
+                    </div>
+                    
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/VvPg9lD.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">TrophyHunter99</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "Got the Platinum for Bloodborne—those cursed dungeons were IMPOSSIBLE for me. The booster did it in 2 days and even sent clips. Absolute legend!"
+                        </p>
+                        <span class="review-game">PS5 Trophy Service</span>
+                        <p class="review-date">April 2, 2023</p>
+                    </div>
+                    
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/9Rq7NQz.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">WZ_Sweatlord</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "Bot lobby service was FIRE. Got Orion camo in one night. The booster even showed me how to keep getting bot lobbies after. Worth every penny!"
+                        </p>
+                        <span class="review-game">Call of Duty Bot Lobby</span>
+                        <p class="review-date">March 22, 2023</p>
+                    </div>
+                    
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/JqkXb0W.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">Destiny2_God</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "Flawless Raid carry was smooth AF. The team knew every mechanic and even taught me strats. Got the exotic first try. These guys are the real deal."
+                        </p>
+                        <span class="review-game">Destiny 2 Raid Carry</span>
+                        <p class="review-date">April 5, 2023</p>
+                    </div>
+                    
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://i.imgur.com/5tQmzBv.png" alt="Reviewer" class="review-avatar">
+                            <div class="reviewer-info">
+                                <h3 class="reviewer-name">ModdedAccountKing</h3>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-content">
+                            "Bought a modded GTA account with $2B, all unlocks, and every vehicle. Everything worked perfectly—no bans, no issues. Best service I've used!"
+                        </p>
+                        <span class="review-game">GTA 5 Modded Account</span>
+                        <p class="review-date">March 10, 2023</p>
+                    </div>
+                </div>
             </div>
 
             <h2>CS:GO/CS2 Boosting Services</h2>
@@ -767,5 +1089,81 @@
             </footer>
         </div>
     </div>
+
+    <script>
+        // Music Player Functionality
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        
+        // Try to autoplay (will fail without user interaction)
+        document.addEventListener('click', function() {
+            music.play().catch(e => console.log("Auto-play prevented"));
+        }, { once: true });
+        
+        musicToggle.addEventListener('click', function() {
+            if (music.paused) {
+                music.play();
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            } else {
+                music.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            }
+        });
+        
+        // Floating Tech Elements Animation
+        function createFloatingTech() {
+            const techElements = ['circle', 'line'];
+            const colors = ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107'];
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                const type = techElements[Math.floor(Math.random() * techElements.length)];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.className = `tech-${type}`;
+                element.style.background = type === 'circle' ? color : `linear-gradient(90deg, transparent, ${color}, transparent)`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                
+                if (type === 'line') {
+                    element.style.width = `${Math.random() * 200 + 50}px`;
+                    element.style.transform = `rotate(${Math.random() * 360}deg)`;
+                }
+                
+                document.body.appendChild(element);
+                
+                // Animate
+                animateTechElement(element);
+            }
+        }
+        
+        function animateTechElement(element) {
+            let posX = Math.random() * 100;
+            let posY = Math.random() * 100;
+            let speedX = (Math.random() - 0.5) * 0.2;
+            let speedY = (Math.random() - 0.5) * 0.2;
+            
+            function move() {
+                posX += speedX;
+                posY += speedY;
+                
+                if (posX > 100 || posX < 0) speedX *= -1;
+                if (posY > 100 || posY < 0) speedY *= -1;
+                
+                element.style.left = `${posX}%`;
+                element.style.top = `${posY}%`;
+                
+                requestAnimationFrame(move);
+            }
+            
+            move();
+        }
+        
+        // Initialize
+        createFloatingTech();
+    </script>
 </body>
 </html>
